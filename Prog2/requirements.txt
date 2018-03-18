@@ -4,7 +4,7 @@ backports.ssl-match-hostname
 certifi
 gnureadline
 ipython
-matplotlib
+matplotlib==1.5.3
 mock
 nose
 numpy

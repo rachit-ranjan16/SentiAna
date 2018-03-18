@@ -16,18 +16,13 @@ echo "Install unzip"
 echo "----------------------------"
 sudo apt-get -y -q install unzip
 echo "----------------------------"
-echo "Install pip and python3-tk"
+echo "Install virtualenv"
 echo "----------------------------"
-sudo apt-get -y -q install python3-pip
-sudo apt-get -y -q install python3-tk
-echo "----------------------------"
-echo "Install pyenv"
-echo "----------------------------"
-sudo apt-get -y -q install python3-venv
+sudo apt-get -y -q install virtualenv
 echo "----------------------------"
 echo "Create and Activate Virtual Environment"
 echo "----------------------------"
-pyvenv developEnv
+virtualenv developEnv
 source developEnv/bin/activate
 pip install --upgrade pip
 echo "----------------------------"
