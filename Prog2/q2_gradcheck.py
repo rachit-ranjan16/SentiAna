@@ -2,6 +2,8 @@ import numpy as np
 import random
 
 # First implement a gradient checker by filling in the following functions
+
+
 def gradcheck_naive(f, x):
     """ 
     Gradient check for a function f 
@@ -23,20 +25,33 @@ def gradcheck_naive(f, x):
         ### make sure you call random.setstate(rndstate) before calling f(x) each time, this will make it 
         ### possible to test cost functions with built in randomness later
         ### YOUR CODE HERE:
-        raise NotImplementedError
+        xix = x[ix]
+
+        random.setstate(rndstate)
+        x[ix] = xix + h
+        fxph, _ = f(x)
+        x[ix] = xix
+
+        random.setstate(rndstate)
+        x[ix] = xix - h
+        fxmh, _ = f(x)
+        x[ix] = xix
+
+        numgrad = (fxph - fxmh) / (2*h)
         ### END YOUR CODE
 
         # Compare gradients
         reldiff = abs(numgrad - grad[ix]) / max(1, abs(numgrad), abs(grad[ix]))
         if reldiff > 1e-5:
-            print "Gradient check failed."
-            print "First gradient error found at index %s" % str(ix)
-            print "Your gradient: %f \t Numerical gradient: %f" % (grad[ix], numgrad)
+            print("Gradient check failed.")
+            print("First gradient error found at index %s" % str(ix))
+            print("Your gradient: %f \t Numerical gradient: %f" % (grad[ix], numgrad))
             return
     
         it.iternext() # Step to next dimension
 
-    print "Gradient check passed!"
+    print("Gradient check passed!")
+
 
 def sanity_check():
     """
@@ -44,11 +59,12 @@ def sanity_check():
     """
     quad = lambda x: (np.sum(x ** 2), x * 2)
 
-    print "Running sanity checks..."
+    print("Running sanity checks...")
     gradcheck_naive(quad, np.array(123.456))      # scalar test
     gradcheck_naive(quad, np.random.randn(3,))    # 1-D test
     gradcheck_naive(quad, np.random.randn(4,5))   # 2-D test
-    print ""
+    print("")
+
 
 def your_sanity_checks(): 
     """
@@ -57,10 +73,8 @@ def your_sanity_checks():
     This function will not be called by the autograder, nor will
     your additional tests be graded.
     """
-    print "Running your sanity checks..."
-    ### YOUR CODE HERE
-    raise NotImplementedError
-    ### END YOUR CODE
+    pass
+
 
 if __name__ == "__main__":
     sanity_check()
