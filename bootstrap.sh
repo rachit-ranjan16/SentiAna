@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "----------------------------"
 echo "Updating"
 echo "----------------------------"
@@ -11,9 +12,14 @@ sudo apt-get -y -q install vim
 sudo cp /vagrant_data/.vimrc /home/ubuntu
 sudo cp /vagrant_data/.vimrc /root/
 echo "----------------------------"
-echo "Install pip"
+echo "Install unzip"
+echo "----------------------------"
+sudo apt-get -y -q install unzip
+echo "----------------------------"
+echo "Install pip and python3-tk"
 echo "----------------------------"
 sudo apt-get -y -q install python3-pip
+sudo apt-get -y -q install python3-tk
 echo "----------------------------"
 echo "Install pyenv"
 echo "----------------------------"
@@ -34,3 +40,8 @@ echo "----------------------------"
 sudo apt-get -y -q install git
 git config --global user.name "rachit.ranjan16"
 git config --global user.email "rachit.ranjan93@gmail.com"
+echo "----------------------------"
+echo "Get Dataset"
+echo "----------------------------"
+chmod +x /Prog2/big_data/datasets/get_datasets.sh
+./Prog2/big_data/datasets/get_datasets.sh
