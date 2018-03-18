@@ -47,7 +47,7 @@ for regularization in REGULARIZATION:
     random.seed(3141)
     np.random.seed(59265)
     weights = np.random.randn(dimVectors, 5)
-    print "Training for reg=%f" % regularization 
+    print ("Training for reg=%f" % regularization)
 
     # We will do batch optimization
     weights = sgd(lambda weights: softmax_wrapper(trainFeatures, trainLabels, 
@@ -56,12 +56,12 @@ for regularization in REGULARIZATION:
     # Test on train set
     _, _, pred = softmaxRegression(trainFeatures, trainLabels, weights)
     trainAccuracy = accuracy(trainLabels, pred)
-    print "Train accuracy (%%): %f" % trainAccuracy
+    print("Train accuracy (%%): %f" % trainAccuracy)
 
     # Test on dev set
     _, _, pred = softmaxRegression(devFeatures, devLabels, weights)
     devAccuracy = accuracy(devLabels, pred)
-    print "Dev accuracy (%%): %f" % devAccuracy
+    print("Dev accuracy (%%): %f" % devAccuracy)
 
     # Save the results and weights
     results.append({
@@ -71,22 +71,22 @@ for regularization in REGULARIZATION:
         "dev" : devAccuracy})
 
 # Print the accuracies
-print ""
-print "=== Recap ==="
-print "Reg\t\tTrain\t\tDev"
+print("")
+print("=== Recap ===")
+print("Reg\t\tTrain\t\tDev")
 for result in results:
-    print "%E\t%f\t%f" % (
+    print("%E\t%f\t%f" % (
         result["reg"], 
         result["train"], 
-        result["dev"])
-print ""
+        result["dev"]))
+print("")
 
 # Pick the best regularization parameters
 BEST_REGULARIZATION = None
 BEST_WEIGHTS = None
 
 ### YOUR CODE HERE 
-raise NotImplementedError
+
 ### END YOUR CODE
 
 # Test your findings on the test set
@@ -99,8 +99,8 @@ for i in xrange(nTest):
     testFeatures[i, :] = getSentenceFeature(tokens, wordVectors, words)
 
 _, _, pred = softmaxRegression(testFeatures, testLabels, BEST_WEIGHTS)
-print "Best regularization value: %E" % BEST_REGULARIZATION
-print "Test accuracy (%%): %f" % accuracy(testLabels, pred)
+print("Best regularization value: %E" % BEST_REGULARIZATION)
+print("Test accuracy (%%): %f" % accuracy(testLabels, pred))
 
 # Make a plot of regularization vs accuracy
 plt.plot(REGULARIZATION, [x["train"] for x in results])

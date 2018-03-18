@@ -23,7 +23,8 @@ def getSentenceFeature(tokens, wordVectors, sentence):
     sentVector = np.zeros((wordVectors.shape[1],))
     
     ### YOUR CODE HERE
-    raise NotImplementedError
+    word_idx = [tokens[word] for word in sentence]
+    sentVector = np.sum(wordVectors[word_idx], axis=0)
     ### END YOUR CODE
     
     return sentVector
@@ -55,7 +56,18 @@ def softmaxRegression(features, labels, weights, regularization = 0.0, nopredict
     cost += 0.5 * regularization * np.sum(weights ** 2)
     
     ### YOUR CODE HERE: compute the gradients and predictions
-    raise NotImplementedError
+    grad = np.zeros_like(weights)
+    pred = 0
+
+    label_shape = np.shape(weights)[1]
+
+    d = prob - np.eye(label_shape)[labels]
+    grad = (np.dot(features.T, d) / N) + regularization * weights
+
+    if N > 1:
+        pred = np.argmax(prob, axis=1)
+    else:
+        pred = np.argmax(prob)
     ### END YOUR CODE
     
     if nopredictions:
@@ -91,15 +103,16 @@ def sanity_check():
     dummy_weights = 0.1 * np.random.randn(dimVectors, 5)
     dummy_features = np.zeros((10, dimVectors))
     dummy_labels = np.zeros((10,), dtype=np.int32)    
-    for i in xrange(10):
+    for i in range(10):
         words, dummy_labels[i] = dataset.getRandomTrainSentence()
         dummy_features[i, :] = getSentenceFeature(tokens, wordVectors, words)
-    print "==== Gradient check for softmax regression ===="
+    print("==== Gradient check for softmax regression ====")
     gradcheck_naive(lambda weights: softmaxRegression(dummy_features,
         dummy_labels, weights, 1.0, nopredictions = True), dummy_weights)
 
-    print "\n=== Results ==="
-    print softmaxRegression(dummy_features, dummy_labels, dummy_weights, 1.0)
+    print("\n=== Results ===")
+    print(softmaxRegression(dummy_features, dummy_labels, dummy_weights, 1.0))
+
 
 if __name__ == "__main__":
     sanity_check()
