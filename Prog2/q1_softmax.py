@@ -36,12 +36,10 @@ def softmax(x):
     #     max_x = np.sum(x)
     #     x /= max_x
 
-
-    orig_shape = x.shape
-    c = np.max(x, axis=-1, keepdims=True)
-    exps = np.exp(x - c)
-    sum_exps = np.sum(exps, axis=-1, keepdims=True)
-    x = exps / sum_exps
+    x_max = np.max(x, axis=-1, keepdims=True)
+    x_exp = np.exp(x - x_max)
+    sum_exps = np.sum(x_exp, axis=-1, keepdims=True)
+    x = x_exp / sum_exps
     return x
     ### END YOUR CODE
 
@@ -70,6 +68,7 @@ def test_softmax_basic():
 
     print ("You should verify these results!\n")
 
+
 def test_softmax():
     """
     Use this space to test your softmax implementation by running:
@@ -81,6 +80,7 @@ def test_softmax():
     ### YOUR CODE HERE
     pass
     ### END YOUR CODE
+
 
 if __name__ == "__main__":
     test_softmax_basic()
