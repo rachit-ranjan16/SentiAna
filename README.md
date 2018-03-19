@@ -13,5 +13,7 @@ Sentiment Analysis using NLP techniques built ground up
   - Execute all the python files  
   
 ## Output Images 
-  - ![Can't Display](/Prog2/q3_word_vectors.png?raw=true "Word Vectors")
-  - ![Can't Display](/Prog2/q4_reg_v_acc.png?raw=true "Accuracy with Regularization")
+### Word Vectors
+  ![Can't Display](/Prog2/q3_word_vectors.png?raw=true "Word Vectors")
+### Accuracy with Regularization
+  ![Can't Display](/Prog2/q4_reg_v_acc.png?raw=true "Accuracy with Regularization")
