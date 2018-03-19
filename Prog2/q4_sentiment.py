@@ -10,7 +10,7 @@ from q4_softmaxreg import softmaxRegression, getSentenceFeature, accuracy, softm
 # NOTE: fill in one more "your code here" below before running!
 REGULARIZATION = None   # Assign a list of floats in the block below
 ### YOUR CODE HERE
-
+REGULARIZATION = [0.0, 0.0000001,0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1]
 ### END YOUR CODE
 
 # Load the dataset
