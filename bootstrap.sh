@@ -16,24 +16,20 @@ echo "Install unzip"
 echo "----------------------------"
 sudo apt-get -y -q install unzip
 echo "----------------------------"
-echo "Install pip and python3-tk"
+echo "Install Python Things"
 echo "----------------------------"
-sudo apt-get -y -q install python3-pip
-sudo apt-get -y -q install python3-tk
-echo "----------------------------"
-echo "Install pyenv"
-echo "----------------------------"
-sudo apt-get -y -q install python3-venv
+sudo apt-get -q -q install python-pip
+sudo apt-get -y -q install virtualenv python-tk
 echo "----------------------------"
 echo "Create and Activate Virtual Environment"
 echo "----------------------------"
-pyvenv developEnv
+virtualenv developEnv
 source developEnv/bin/activate
 pip install --upgrade pip
 echo "----------------------------"
 echo "Install Specified Dependencies in VirtualEnv"
 echo "----------------------------"
-pip install -r /Prog2/requirements.txt
+pip install -r /Prog2/requirementsAB.txt
 echo "----------------------------"
 echo "Install and configure git"
 echo "----------------------------"
