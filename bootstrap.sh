@@ -16,9 +16,10 @@ echo "Install unzip"
 echo "----------------------------"
 sudo apt-get -y -q install unzip
 echo "----------------------------"
-echo "Install virtualenv"
+echo "Install Python Things"
 echo "----------------------------"
-sudo apt-get -y -q install virtualenv
+sudo apt-get -q -q install python-pip
+sudo apt-get -y -q install virtualenv python-tk
 echo "----------------------------"
 echo "Create and Activate Virtual Environment"
 echo "----------------------------"
@@ -28,7 +29,7 @@ pip install --upgrade pip
 echo "----------------------------"
 echo "Install Specified Dependencies in VirtualEnv"
 echo "----------------------------"
-pip install -r /Prog2/requirements.txt
+pip install -r /Prog2/requirementsAB.txt
 echo "----------------------------"
 echo "Install and configure git"
 echo "----------------------------"

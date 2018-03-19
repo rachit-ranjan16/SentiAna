@@ -3,8 +3,7 @@ MarkupSafe
 backports.ssl-match-hostname
 certifi
 gnureadline
-ipython
-matplotlib==1.5.3
+matplotlib
 mock
 nose
 numpy
